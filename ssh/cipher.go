@@ -183,7 +183,7 @@ func (s *streamPacketCipher) readCipherPacket(seqNum uint32, r io.Reader) ([]byt
 		return nil, errors.New("ssh: invalid packet length, packet too small")
 	}
 
-	if length > maxPacket {
+	if length > (maxPacket * 4) { // 1024 * 1024
 		return nil, errors.New("ssh: invalid packet length, packet too large 1")
 	}
 
