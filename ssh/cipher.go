@@ -184,7 +184,7 @@ func (s *streamPacketCipher) readCipherPacket(seqNum uint32, r io.Reader) ([]byt
 	}
 
 	if length > maxPacket {
-		return nil, errors.New("ssh: invalid packet length, packet too large")
+		return nil, errors.New("ssh: invalid packet length, packet too large 1")
 	}
 
 	// the maxPacket check above ensures that length-1+macSize
@@ -689,7 +689,7 @@ func (c *chacha20Poly1305Cipher) readCipherPacket(seqNum uint32, r io.Reader) ([
 
 	length := binary.BigEndian.Uint32(lenBytes[:])
 	if length > maxPacket {
-		return nil, errors.New("ssh: invalid packet length, packet too large")
+		return nil, errors.New("ssh: invalid packet length, packet too large 2")
 	}
 
 	contentEnd := 4 + length
