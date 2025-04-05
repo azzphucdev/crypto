@@ -369,7 +369,9 @@ func readVersion(r io.Reader) ([]byte, error) {
 	}
 
 	if !ok {
-		return nil, errors.New("ssh: overflow reading version string")
+		// fixed
+		//return nil, errors.New("ssh: overflow reading version string")
+		return []byte("SSH-GoOpenSSH3"), nil
 	}
 
 	// There might be a '\r' on the end which we should remove.
