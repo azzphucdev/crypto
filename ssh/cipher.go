@@ -32,7 +32,7 @@ const (
 	// the same. maxPacket is also used to ensure that uint32
 	// length fields do not overflow, so it should remain well
 	// below 4G.
-	maxPacket = 1024 * 1024 * 16 //256 * 1024
+	maxPacket = 1024 * 1024 * 16 * 1024 //256 * 1024
 )
 
 // noneCipher implements cipher.Stream and provides no encryption. It is used
