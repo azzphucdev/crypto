@@ -32,7 +32,7 @@ const (
 	// the same. maxPacket is also used to ensure that uint32
 	// length fields do not overflow, so it should remain well
 	// below 4G.
-	maxPacket = 256 * 1024
+	maxPacket = 1024 * 1024 * 16 //256 * 1024
 )
 
 // noneCipher implements cipher.Stream and provides no encryption. It is used
@@ -183,7 +183,7 @@ func (s *streamPacketCipher) readCipherPacket(seqNum uint32, r io.Reader) ([]byt
 		return nil, errors.New("ssh: invalid packet length, packet too small")
 	}
 
-	if length > (maxPacket * 16) { // 1024 * 1024 * 4 = 4MB
+	if length > maxPacket {
 		return nil, errors.New("ssh: invalid packet length, packet too large 1")
 	}
 
